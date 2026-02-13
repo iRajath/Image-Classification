@@ -69,20 +69,20 @@ def train_model(model, train_loader, num_epochs=3):
 ## OUTPUT
 ### Training Loss per Epoch
 
-Include the Training Loss per epoch
+<img width="265" height="162" alt="image" src="https://github.com/user-attachments/assets/ae1e1940-22c6-4c10-9999-40b90954b325" />
 
 ### Confusion Matrix
 
-Include confusion matrix here
+<img width="720" height="703" alt="image" src="https://github.com/user-attachments/assets/a29b2ebd-0a2e-4bb0-8fb0-5dce57a8bac3" />
 
 ### Classification Report
 
-Include Classification Report here
+<img width="462" height="333" alt="image" src="https://github.com/user-attachments/assets/afccb944-6aae-4db4-a9c5-f7ad239acd59" />
 
 
 ### New Sample Data Prediction
 
-Include your sample input and output 
+<img width="410" height="494" alt="image" src="https://github.com/user-attachments/assets/1d97c8a9-c9d7-4f60-83df-d40159fe6b14" />
 
 ## RESULT
 Include your result here.
