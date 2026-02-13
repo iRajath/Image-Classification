@@ -14,56 +14,87 @@ Include the neural network model diagram.
 
 ## DESIGN STEPS
 
-### STEP 1:
-Write your own steps
+### **Step 1: Define the Objective**
 
-### STEP 2:
+Set the goal of creating a **Convolutional Neural Network (CNN)** capable of recognizing and categorizing handwritten digits from 0 through 9.
 
-### STEP 3:
+### **Step 2: Gather the Dataset**
+
+Work with the MNIST dataset, which provides 60,000 images for training and 10,000 images for testing handwritten digit recognition models.
+
+### **Step 3: Prepare the Data**
+
+Transform the images into tensor format, scale pixel values to a normalized range to improve learning performance, and organize the data into DataLoaders to enable efficient batch-based processing.
+
+### **Step 4: Build the Network Architecture**
+
+Construct a CNN model that includes convolutional layers for extracting features, nonlinear activation functions such as ReLU, pooling layers to reduce spatial dimensions, and fully connected layers to perform final classification.
+
+### **Step 5: Train the Network**
+
+Train the model over several epochs using a suitable loss function like CrossEntropyLoss and an optimization algorithm such as Adam to adjust the model’s parameters.
+
+### **Step 6: Assess Model Performance**
+
+Evaluate the trained model using the test dataset. Calculate accuracy and examine performance further through a confusion matrix and a classification report.
+
+### **Step 7: Save and Deploy the Model**
+
+Store the trained model for later use, display prediction results for visualization, and integrate the model into an application if deployment is required.
+
 
 
 ## PROGRAM
 
-### Name:
-### Register Number:
+### Name: S Rajath
+### Register Number: 212224240127
 ```python
 class CNNClassifier(nn.Module):
     def __init__(self):
         super(CNNClassifier, self).__init__()
-        # write your code here
+    self.conv1 = nn.Conv2d(in_channels=1, out_channels=32, kernel_size=3, padding=1)
+    self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1)
+    self.conv3 = nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1)
+    self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+    self.fc1 = nn.Linear(128*3*3,128)
+    self.fc2 = nn.Linear(128,64)
+    self.fc3 = nn.Linear(64,10)
 
-
-
-
-
-    def forward(self, x):
-        # write your code here
-
-
-
+  def forward(self,x):
+    x = self.pool(torch.relu(self.conv1(x)))
+    x = self.pool(torch.relu(self.conv2(x)))
+    x = self.pool(torch.relu(self.conv3(x)))
+    x = x.view(x.size(0),-1)
+    x = torch.relu(self.fc1(x))
+    x = torch.relu(self.fc2(x))
+    x = self.fc3(x)
+    return x
 ```
 
 ```python
 # Initialize the Model, Loss Function, and Optimizer
-model =
-criterion =
-optimizer =
-
+model = CNNClassifier()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(),lr=0.001)
 ```
 
 ```python
 # Train the Model
-def train_model(model, train_loader, num_epochs=3):
+def train_model(model,train_loader,num_epochs=3):
+  for epoch in range(num_epochs):
+    model.train()
+    running_loss = 0.0
+    for images,labels in train_loader:
+      optimizer.zero_grad()
+      outputs = model(images)
+      loss = criterion(outputs,labels)
+      loss.backward()
+      optimizer.step()
+      running_loss += loss.item()
 
-    # write your code here
-
-        
-        
-        
-        print('Name:        ')
-        print('Register Number:       ')
-        print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
-
+    print('Name: Abishek Priyan M')
+    print('Register Number: 212224240004')
+    print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
 ```
 
 ## OUTPUT
