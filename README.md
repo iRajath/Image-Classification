@@ -1,16 +1,14 @@
-# Convolutional Deep Neural Network for Image Classification
-
 ## AIM
 
 To Develop a convolutional deep neural network for image classification and to verify the response for new images.
 
 ## Problem Statement and Dataset
 
-Include the Problem Statement and Dataset.
-
+The goal of this project is to develop a Convolutional Neural Network (CNN) for image classification using the Fashion-MNIST dataset. The Fashion-MNIST dataset contains images of various clothing items (T-shirts, trousers, dresses, shoes, etc.), and the model aims to classify them correctly. The challenge is to achieve high accuracy while maintaining efficiency.
 ## Neural Network Model
 
-Include the neural network model diagram.
+<img width="1271" height="463" alt="image" src="https://github.com/user-attachments/assets/419bdfb9-b070-4ac7-855b-bf7507ff5bb1" />
+
 
 ## DESIGN STEPS
 
@@ -92,8 +90,8 @@ def train_model(model,train_loader,num_epochs=3):
       optimizer.step()
       running_loss += loss.item()
 
-    print('Name: Abishek Priyan M')
-    print('Register Number: 212224240004')
+    print('Name: S Rajath')
+    print('Register Number: 212224240127')
     print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
 ```
 
